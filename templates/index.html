@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
+    <title>Osmos</title>
+</head>
+<body>
+    <div class="side">
+        <form action="/" method="POST">
+            <div class="data">
+                <div>
+                    <label for="ci">Ci:</label><br>
+                    <input type="number" step="any" id="ci" name="ci" value="1500" placeholder="Enter value" required>
+                </div>
+                <div>
+                    <label for="gv">Gv:</label><br>
+                    <input type="number" step="any" id="gv" name="gv" value="1" placeholder="Enter value" required>
+                </div>
+                <div>
+                    <label for="xz">Xz:</label><br>
+                    <input type="number" step="any" id="xz" name="xz" value="0.99" placeholder="Enter value" required>
+                </div>
+                <div>
+                    <label for="xp">Xp:</label><br>
+                    <input type="number" step="any" id="xp" name="xp" value="0.2" placeholder="Enter value" required>
+                </div>
+                <div>
+                    <label for="xr">Xr:</label><br>
+                    <input type="number" step="any" id="xr" name="xr" value="0.2" placeholder="Enter value" required>
+                </div>
+                <div>
+                    <label for="xr2">Xr2:</label><br>
+                    <input type="number" step="any" id="xr2" name="xr2" value="0.2" placeholder="Enter value" required>
+                </div>
+            </div>
+            <span>{{message}}</span>
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
+
+    <div class="top">
+        <h1>Розрахунок одноступінчатої зворотноосмотичної установки</h1>
+        <div class="result">
+            <div class="element">
+                <h2>Змішувач</h2>
+                <table>
+                    <tr>
+                        <th>Gi</th>
+                        <th>Cv</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res1[0] or "000.00"}}</td>
+                        <td>{{ res1[1] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="element">
+                <h2>Мембрана</h2>
+                <table>
+                    <tr>
+                        <th>Gp</th>
+                        <th>Cp</th>
+                        <th>Gk</th>
+                        <th>Ck</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res1[2] or "000.00"}}</td>
+                        <td>{{ res1[3] or "000.00"}}</td>
+                        <td>{{ res1[4] or "000.00"}}</td>
+                        <td>{{ res1[5] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="element">
+                <h2>Розділювач</h2>
+                <table>
+                    <tr>
+                        <th>Gr</th>
+                        <th>Gs</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res1[6] or "000.00"}}</td>
+                        <td>{{ res1[7] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="comp">
+            <table>
+                <tr>
+                    <th>LP</th>
+                    <td>{{ res1[8] or "000.00"}}</td>
+                </tr>
+            </table>
+            <span id="os1"></span>
+            <table>
+                <tr>
+                    <th>RP</th>
+                    <td>{{ res1[9] or "000.00"}}</td>
+                </tr>
+            </table>
+        </div> 
+    </div>
+
+    <div class="bottom">
+        <h1>Розрахунок двоступінчатої зворотноосмотичної установки</h1>
+        <div class="result">
+            <div class="element">
+                <h2>Змішувач</h2>
+                <table>
+                    <tr>
+                        <th>Gi</th>
+                        <th>Cv</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res2[0] or "000.00"}}</td>
+                        <td>{{ res2[1] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+    
+            <div class="element">
+                <h2>Мембрана</h2>
+                <table>
+                    <tr>
+                        <th>Gp</th>
+                        <th>Cp</th>
+                        <th>Gk</th>
+                        <th>Ck</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res2[2] or "000.00"}}</td>
+                        <td>{{ res2[3] or "000.00"}}</td>
+                        <td>{{ res2[4] or "000.00"}}</td>
+                        <td>{{ res2[5] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+    
+            <div class="element">
+                <h2>Мембрана-2</h2>
+                <table>
+                    <tr>
+                        <th>Gp2</th>
+                        <th>Cp2</th>
+                        <th>Gk2</th>
+                        <th>Ck2</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res2[10] or "000.00"}}</td>
+                        <td>{{ res2[11] or "000.00"}}</td>
+                        <td>{{ res2[12] or "000.00"}}</td>
+                        <td>{{ res2[13] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+    
+            <div class="element">
+                <h2>Змішувач-2</h2>
+                <table>
+                    <tr>
+                        <th>Gi2</th>
+                        <th>Gv2</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res2[8] or "000.00"}}</td>
+                        <td>{{ res2[9] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+    
+            <div class="element">
+                <h2>Розділювач</h2>
+                <table>
+                    <tr>
+                        <th>Gr</th>
+                        <th>Gs</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res2[6] or "000.00"}}</td>
+                        <td>{{ res2[7] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+    
+            <div class="element">
+                <h2>Розділювач-2</h2>
+                <table>
+                    <tr>
+                        <th>Gr2</th>
+                        <th>Gs2</th>
+                    </tr>
+                    <tr>
+                        <td>{{ res2[14] or "000.00"}}</td>
+                        <td>{{ res2[15] or "000.00"}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="comp">
+            <table>
+                <tr>
+                    <th>LP</th>
+                    <td>{{ res2[16] or "000.00"}}</td>
+                </tr>
+            </table>
+            <span id="os2"></span>
+            <table>
+                <tr>
+                    <th>RP</th>
+                    <td>{{ res2[17] or "000.00"}}</td>
+                </tr>
+            </table>
+        </div> 
+    </div>
+</body>
+</html>
