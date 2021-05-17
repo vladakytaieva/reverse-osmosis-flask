@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">
-    <title>Osmos</title>
+    <title>Reverse osmosis</title>
 </head>
 <body>
     <div class="side">
@@ -13,27 +13,27 @@
             <div class="data">
                 <div>
                     <label for="ci">Ci:</label><br>
-                    <input type="number" step="any" id="ci" name="ci" value="1500" placeholder="Enter value" required>
+                    <input type="number" step="any" id="ci" name="ci"  placeholder="Enter value" {% if data|length > 0 %} value={{data[0]}} {% endif %} required>
                 </div>
                 <div>
                     <label for="gv">Gv:</label><br>
-                    <input type="number" step="any" id="gv" name="gv" value="1" placeholder="Enter value" required>
+                    <input type="number" step="any" id="gv" name="gv" placeholder="Enter value" {% if data|length > 0 %} value={{data[1]}} {% endif %} required>
                 </div>
                 <div>
                     <label for="xz">Xz:</label><br>
-                    <input type="number" step="any" id="xz" name="xz" value="0.99" placeholder="Enter value" required>
+                    <input type="number" step="any" id="xz" name="xz" placeholder="Enter value" {% if data|length > 0 %} value={{data[2]}} {% endif %} required>
                 </div>
                 <div>
                     <label for="xp">Xp:</label><br>
-                    <input type="number" step="any" id="xp" name="xp" value="0.2" placeholder="Enter value" required>
+                    <input type="number" step="any" id="xp" name="xp" placeholder="Enter value" {% if data|length > 0 %} value={{data[3]}} {% endif %} required>
                 </div>
                 <div>
                     <label for="xr">Xr:</label><br>
-                    <input type="number" step="any" id="xr" name="xr" value="0.2" placeholder="Enter value" required>
+                    <input type="number" step="any" id="xr" name="xr" placeholder="Enter value" {% if data|length > 0 %} value={{data[4]}} {% endif %} required>
                 </div>
                 <div>
                     <label for="xr2">Xr2:</label><br>
-                    <input type="number" step="any" id="xr2" name="xr2" value="0.2" placeholder="Enter value" required>
+                    <input type="number" step="any" id="xr2" name="xr2" placeholder="Enter value" {% if data|length > 0 %} value={{data[5]}} {% endif %}>
                 </div>
             </div>
             <span>{{message}}</span>
